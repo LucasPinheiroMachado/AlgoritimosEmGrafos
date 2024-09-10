@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Creator</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="grafo">
+      <h1>Graph Creator</h1>
+      <div>
+        <label for="graphType">Tipo do Grafo:</label>
+        <select id="graphType">
+          <option value="directedUnweighted">Direcional Não Ponderado</option>
+          <option value="undirectedWeighted">Não Direcional Ponderado</option>
+        </select>
+      </div>
+      <div>
+        <label for="numNodes">Número de Nós:</label>
+        <input type="number" id="numNodes" min="1" />
+      </div>
+      <div>
+        <button onclick="startAddingEdges()">Adicionar Arestas</button>
+      </div>
+      <div id="graphContainer"></div>
+
+      <div id="algorithmsContainer">
+        <h2>Algoritmos para Grafo Direcional Não Ponderado</h2>
+        <button onclick="performTopologicalSort()">Ordenação Topológica</button>
+        <button onclick="findStronglyConnectedComponents()">
+          Componentes Fortemente Conectados
+        </button>
+        <h2>Algoritmos para Grafo Não Direcional Ponderado</h2>
+        <button onclick="performDijkstra()">Algoritmo de Dijkstra</button>
+        <button onclick="performAStar()">Algoritmo A*</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

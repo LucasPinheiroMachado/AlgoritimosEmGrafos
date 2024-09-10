@@ -1,0 +1,100 @@
+/* main.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.grafo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 60vw;
+  margin: 2rem auto;
+}
+
+h1 {
+  color: #4a90e2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #4a90e2;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+select,
+input[type='number'] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  width: 240px;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #2a5a8b;
+  transform: translateY(1px);
+}
+
+#graphContainer {
+  margin-top: 1rem;
+}
+
+#algorithmsContainer {
+  margin-top: 2rem;
+  display: none;
+}
+
+#algorithmsContainer button {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .grafo {
+    max-width: 80vw;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  button {
+    width: 240px;
+    /* Remove margin to make buttons take full width */
+  }
+}
