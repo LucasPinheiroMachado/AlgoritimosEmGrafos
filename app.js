@@ -162,6 +162,7 @@ function findStronglyConnectedComponents() {
 
   let time = 0;
 
+  // Primeira DFS no grafo original para preencher a pilha de finalização
   function dfs(graph, node, addToStack = false) {
     visited.add(node);
     discovery[node] = ++time;
@@ -180,18 +181,21 @@ function findStronglyConnectedComponents() {
     }
   }
 
+  // Executa a DFS no grafo original
   for (const node of graph.getNodes()) {
     if (!visited.has(node)) {
       dfs(graph, node, true);
     }
   }
 
+  // Limpa o conjunto de visitados para reutilizar
   visited.clear();
   const stronglyConnectedComponents = [];
 
-  function collectComponent(node) {
+  // Coletar componente no grafo transposto
+  function collectComponent(graph, node) {
     const component = [];
-    function dfsCollect(node) {
+    function dfsCollect(graph, node) {
       visited.add(node);
       component.push(node);
       const edges = graph.getAdjacencyList()[node];
@@ -199,19 +203,20 @@ function findStronglyConnectedComponents() {
         for (const edge of edges) {
           const nextNode = edge.node || edge;
           if (!visited.has(nextNode)) {
-            dfsCollect(nextNode);
+            dfsCollect(graph, nextNode);
           }
         }
       }
     }
-    dfsCollect(node);
+    dfsCollect(graph, node);
     return component;
   }
 
+  // Segunda DFS no grafo transposto para encontrar SCCs
   while (stack.length) {
     const node = stack.pop();
     if (!visited.has(node)) {
-      const component = collectComponent(node);
+      const component = collectComponent(transposeGraph, node);
       stronglyConnectedComponents.push(component);
     }
   }
@@ -224,11 +229,7 @@ function findStronglyConnectedComponents() {
     .join(', ');
 
   alert(
-    `Componentes Fortemente Conectados:\n${componentsOutput}\n\nOrdem de Descoberta e Finalização:\nG - ${discoveryFinishOrder}\nGT - ${Object.entries(
-      discovery,
-    )
-      .map(([node]) => `${node} (${discovery[node]}/${finish[node]})`)
-      .join(', ')}`,
+    `Componentes Fortemente Conectados:\n${componentsOutput}\n\nOrdem de Descoberta e Finalização:\n${discoveryFinishOrder}`,
   );
 }
 
