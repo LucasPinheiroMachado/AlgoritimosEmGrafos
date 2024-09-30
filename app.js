@@ -67,7 +67,6 @@ let graph;
 
 function startAddingEdges() {
   const graphType = document.getElementById('graphType').value;
-  const numNodes = parseInt(document.getElementById('numNodes').value, 10);
   const directed = graphType === 'directedUnweighted';
   const weighted = graphType === 'undirectedWeighted';
   graph = new Graph(directed, weighted);

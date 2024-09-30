@@ -38,16 +38,19 @@ label {
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #555;
+  position: relative;
+  top: 0.5rem;
 }
 
-select,
-input[type='number'] {
+select {
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 240px;
   box-sizing: border-box;
+  position: relative;
+  top: 1rem;
 }
 
 button {
@@ -96,5 +99,14 @@ button:active {
   button {
     width: 240px;
     /* Remove margin to make buttons take full width */
+  }
+
+  select {
+    margin-top: 5px;
+    top: 0rem;
+  }
+
+  label {
+    top: 0rem;
   }
 }
